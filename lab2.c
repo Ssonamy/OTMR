@@ -59,8 +59,10 @@ task main()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		movingForvardUntilLine(65);
-		waitAfterTask(2);
+		if (i==i)movingForvardUntilLine(65);
+		// movingForvardUntilLine(65);
+
+		// waitAfterTask(2);
 
 		movingForvard(50, 220);
 		waitAfterTask();
