@@ -27,7 +27,7 @@ void movingForvardUntilLine(int value,
 	waitAfterTask(2);
 }
 
-void movingForvard(	int speed = 50,
+void movingForward(	int speed = 50,
 					int duration = 325)
 {
 	motor[motorB] = speed;
@@ -60,11 +60,9 @@ task main()
 	for (int i = 0; i < 4; i++)
 	{
 		if (i==i)movingForvardUntilLine(65);
-		// movingForvardUntilLine(65);
 
-		// waitAfterTask(2);
 
-		movingForvard(50, 220);
+		movingForward(50, 220);
 		waitAfterTask();
 
 		rotation(90 + (4 * i));

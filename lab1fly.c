@@ -24,7 +24,7 @@ void rotation(int angle, bool isLeft = false)
 	}
 }
 
-void movingForvard(int times = 1, int duration = 335)
+void movingForward(int times = 1, int duration = 335)
 {
 	for (int i = 0; i < times; i++)
 	{
@@ -53,18 +53,18 @@ task main()
 	rotation(90);
 	waitAfterTask();
 
-	movingForvard(4);
+	movingForward(4);
 	waitAfterTask();
 
 	rotation(90);
 	waitAfterTask();
 
-	movingForvard(2);
+	movingForward(2);
 	waitAfterTask();
 
 	rotation(90, true);
 	waitAfterTask();
 
-	movingForvard();
+	movingForward();
 	waitAfterTask();
 }
