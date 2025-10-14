@@ -1,8 +1,7 @@
 // !!Использовал робота LEGO REMBot, все значения актуальны для него!!
 // П-регулятор
 
-void waitAfterTask()
-{
+void waitAfterTask(){
 	motor[motorB] = 0;
 	motor[motorC] = 0;
 	wait1Msec(500);
@@ -32,20 +31,19 @@ void forward(float distance, int power = 70){
 }
 
 void rotation(int degrees, int dir = 1){
-    // --- Калибровочные параметры ---
     float L = 116.0;   // Расстояние между колёсами, мм
     float D = 56.0;    // Диаметр колеса, мм
-    float Kp = 0.4;    // Коэффициент пропорциональности (подбирается)
     int basePower = 36; // Базовая мощность моторов
 	
-    // --- Расчёт целевого значения энкодера ---
+    float Kp = 0.4;    // Коэффициент пропорциональности (подбирается)
+	
     int target = (int)((L * degrees) / D + (0.5 * dir));
 
     nMotorEncoder[motorB] = 0;
     nMotorEncoder[motorC] = 0;
 
-	while ((abs(nMotorEncoder[motorB]) < target 
-	&&  + (abs(nMotorEncoder[motorC])) < target))
+	while ((abs(nMotorEncoder[motorB]) < target)
+	&& (abs(nMotorEncoder[motorC])) < target)
     {
         int error = nMotorEncoder[motorB] + nMotorEncoder[motorC];
         int correction = (int)(Kp * error);
@@ -57,8 +55,7 @@ void rotation(int degrees, int dir = 1){
 	waitAfterTask();
 }
 
-task main()
-{
+task main(){
 	forward(6, 100);
 	rotation(89);
 	waitAfterTask();
