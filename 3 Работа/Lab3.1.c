@@ -1,30 +1,28 @@
 // !!Использовал робота LEGO REMBot, все значения актуальны для него!!
 // Ручная подстройка
-void waitAfterTask(int duration)
+void waitAfterTask(int duration = 500)
 {
 	motor[motorB] = 0;
 	motor[motorC] = 0;
 	wait1Msec(duration);
 }
 
-void rotation(int angle, bool isLeft = false)
+void rotation(int degrees, int dir = 1)
 {
-	int leftMultipler = 1;
-	float angleMultipler = angle / 45;
+    float L = 118.0;
+    float D = 56.0;
 
-	if (isLeft) leftMultipler *= -1;
+    int target = (int)((L * degrees) / D + 0.5);
 
-	motor[motorB] = -20;
-	motor[motorC] = -20;
-	wait1Msec(220);
+    nMotorEncoder[motorB] = 0;
+    nMotorEncoder[motorC] = 0;
+    nMotorEncoderTarget[motorB] = target * dir;
+    nMotorEncoderTarget[motorC] = -target * dir;
 
-	for (int i = 0; i < angleMultipler; i++)
-	{
-		motor[motorB] = -30 * leftMultipler;
-		motor[motorC] =  30 * leftMultipler;
-
-		wait1Msec(530);
-	}
+    motor[motorB] = 30 * dir;
+    motor[motorC] = -30 * dir;
+while(nMotorRunState[motorB] != runStateIdle) {}
+    waitAfterTask();
 }
 
 void movingForward(	int speed = 100, int duration = 320)
@@ -40,19 +38,19 @@ task main()
 	movingForward(90, 350);
 	waitAfterTask(300);
 	
-	rotation(90, true);
+	rotation(89);
 	waitAfterTask(300);
 
 	movingForward(90, 470);
 	waitAfterTask(300);
 
-	rotation(120);
+	rotation(90, -1);
 	waitAfterTask(300);
 
 	movingForward(90, 430);
 	waitAfterTask(300);
 
-	rotation(90);
+	rotation(90, -1);
 	waitAfterTask(300);
 
 	movingForward(100, 150);

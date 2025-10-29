@@ -36,7 +36,6 @@ void forward(int distance, int power = 70){
 		if(sumError > 100) sumError = 100;
 		if(sumError < -100) sumError = -100;
 
-
 		// Дифференциальная часть — изменение ошибки
 		int deltaError = error - prevError;
 
@@ -47,40 +46,32 @@ void forward(int distance, int power = 70){
 		motor[motorB] = basePower - correction;
 		motor[motorC] = basePower + correction;
 
-		// Сохраняем ошибку для следующего шага
 		prevError = error;
-
-		// Задержка для стабильности (цикл ≈ 20 мс)
 		wait1Msec(20);
 	}
 	waitAfterTask();
 }
 
 void rotation(float degrees, int dir = 1){
-	float calibration = /* 1.35 */ 1 ;
+	float calibration = 1.02;
     // Параметры робота
     float L = 120.0;    // Расстояние между колёсами (мм)
     float D = 56.0;     // Диаметр колеса (мм)
     int basePower = 47;  // Базовая мощность моторов
     
-    // Коэффициенты ПИД-регулятора
     float Kp = 1.2;     // Пропорциональный
     float Ki = 0.02;    // Интегральный  
     float Kd = 0.8;     // Дифференциальный
     
-    // Расчет целевого значения
     float target = (int)((L * degrees * calibration) / D);
     
-    // Переменные ПИД-регулятора
     float error = 0, prevError = 0;
     float sumError = 0, deltaError = 0;
     float correction = 0;
     
-    // Сброс энкодеров
     nMotorEncoder[motorB] = 0;
     nMotorEncoder[motorC] = 0;
     
-    // Основной цикл регулирования
     while(true) {
         // Текущая позиция - используем среднее двух энкодеров
         int encB = nMotorEncoder[motorB];
@@ -122,7 +113,7 @@ void rotation(float degrees, int dir = 1){
 task main()
 {
 	forward(6);
-	rotation(93.6);
+	rotation(90);
 	waitAfterTask();
 
 	forward(6, 70);	
@@ -133,5 +124,5 @@ task main()
 	rotation(90, -1);
 	waitAfterTask();
 
-	forward(2, 100);
+	forward(2, 70);
 }

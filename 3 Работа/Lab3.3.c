@@ -57,15 +57,15 @@ void rotation(int degrees, int dir = 1){
 
 task main(){
 	forward(6, 100);
-	rotation(89);
+	rotation(87);
 	waitAfterTask();
 
 	forward(5.5, 70);	
-	rotation(88, -1);
+	rotation(86, -1);
 	waitAfterTask();
 	
 	forward(4, 70);	
-	rotation(88, -1);
+	rotation(87, -1);
 	waitAfterTask();
 
 

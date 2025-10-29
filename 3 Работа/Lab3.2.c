@@ -49,11 +49,11 @@ void rotation(int degrees)
 task main()
 {
 	forward(6, 70);
-	rotation(90);
+	rotation(91);
 	forward(5.5, 70);	
-	rotation(-90);
+	rotation(-91);
 	forward(4, 70);	
-	rotation(-90);
+	rotation(-91);
 	forward(2, 100);
 }
 	
