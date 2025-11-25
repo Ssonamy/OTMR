@@ -47,7 +47,7 @@ task main()
 	rotation(90, -1);
 	waitAfterTask(300);
 
-	movingForward(90, 430);
+	movingForward(90, 500);
 	waitAfterTask(300);
 
 	rotation(90, -1);

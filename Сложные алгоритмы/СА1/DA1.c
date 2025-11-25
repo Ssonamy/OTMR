@@ -26,7 +26,7 @@ task main(){
 	
 	int duration1r = 21500; // при скорости движения по линии в 50
 	int duration2r = 16500;
-	int duration3r = 28000;
+	int duration3r = 28300;
 	
 	if (SensorValue[sonarSensor] > 100){
 
@@ -152,7 +152,7 @@ task main(){
 		
 		motor[motorB] = 50;
 		motor[motorC] = 50;
-		wait10Msec (85);
+		wait10Msec (88);
 		
 		motor[motorB] =  30;
 		motor[motorC] = -30;
@@ -178,7 +178,7 @@ task main(){
 		
 		motor[motorB] = 50;
 		motor[motorC] = 50;
-		wait10Msec (210);
+		wait10Msec (230);
 		
 		clearTimer(T1);
 		
@@ -195,7 +195,7 @@ task main(){
 		}
 		motor[motorB] =  30;
 		motor[motorC] = -30;
-		wait10Msec(100);
+		wait10Msec(110);
 		
 		motor[motorB] = 50;
 		motor[motorC] = 50;
