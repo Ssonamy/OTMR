@@ -34,12 +34,7 @@ task main(){
 	motor[motorB] = 50;   	// скорость левого мотора
 	motor[motorC] = 50;   	// скорость правого мотора
 	while(SensorValue[sonarSensor] > 20){}
-	
-/* 	// Остановка моторов
-	motor[motorB] = 0;
-	motor[motorC] = 0;
-	wait10Msec(5); */
-	
+		
 	// Поворот по направлению линии
 	motor[motorB] =  30; 
 	motor[motorC] = -30;
